@@ -1,0 +1,13 @@
+Package: PowerSwitchingTrial
+Type: Package
+Title: Package for power and sample size estimation in clinic trials
+        with treatment switching
+Version: 0.1.1
+Author: Lejun Deng, Chih-Yuan Hsu 
+Maintainer: <darwindenglejun@gmail.com>
+Description: 
+Depends: survival, survminer
+License: LGPL
+Encoding: UTF-8
+NeedsCompilation: no
+Packaged: 2022-01-03 22:02:41 UTC; darwin
