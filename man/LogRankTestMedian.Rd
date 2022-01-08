@@ -75,6 +75,7 @@ pwUpper   0.6556
 lower    50.0000
 upper    70.0000
 ## In the above, the range of the lower and upper numbers did not include the power value we specified (0.8) Looking at the results, we can see that they were both smaller than 0.8. If pwLower is greater than the specified power, decrease the lower argument. If pwUpper is smaller than the specified power, increase the upper argument.
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
 % \keyword{ ~kwd1 }
