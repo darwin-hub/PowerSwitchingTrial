@@ -1,12 +1,12 @@
-LogRankTestPowerMedian <- function(m1,m2,n,min,max,reps,alpha,r){
+LogRankTestPowerMedian <- function(m1,m2,n,Ta,Te,reps,alpha,r){
   p=vector()
   for(x in 1:reps){
     rate1 <- log(2)/m1
     rate2 <- log(2)/m2
     t1 <- rexp(n, rate=rate1)
     t2 <- rexp(n*r, rate=rate2)
-    c1 <- runif(n, min, max)
-    c2 <- runif(n*r, min, max)
+    c1 <- c(Te-runif(n, 0, Ta))
+    c2 <- c(Te-runif(n*r, 0, Ta))
     group <- c(rep(1,n), rep(2,n*r))
     time <- c(ifelse(t1<c1, t1, c1), ifelse(t2<c2, t2, c2))
     status <- c(ifelse(t1<c1, 1, 0), ifelse(t2<c2, 1, 0))
@@ -16,13 +16,13 @@ LogRankTestPowerMedian <- function(m1,m2,n,min,max,reps,alpha,r){
   }
   mean(p<alpha)
 }
-LogRankTestMedian <- function(m1,m2,min,max,reps,alpha,r,lower,upper,power){
-  pwLower <- LogRankTestPowerMedian(m1,m2,n=lower,min,max,reps,alpha,r)
-  pwUpper <- LogRankTestPowerMedian(m1,m2,n=upper,min,max,reps,alpha,r)
+LogRankTestMedian <- function(m1,m2,Ta,Te,reps,alpha,r,lower,upper,power){
+  pwLower <- LogRankTestPowerMedian(m1,m2,n=lower,Ta,Te,reps,alpha,r)
+  pwUpper <- LogRankTestPowerMedian(m1,m2,n=upper,Ta,Te,reps,alpha,r)
   K <- 1
   repeat {
     middle <- ceiling((upper+lower)/2)
-    pwMiddle <- LogRankTestPowerMedian(m1,m2,n=middle,min,max,reps,alpha,r)
+    pwMiddle <- LogRankTestPowerMedian(m1,m2,n=middle,Ta,Te,reps,alpha,r)
     if ((pwMiddle >= power & middle==lower) | (pwMiddle >= power & middle==upper) | K >= 50) {
       print(c(N=upper, K=K))
       break
@@ -37,7 +37,7 @@ LogRankTestMedian <- function(m1,m2,min,max,reps,alpha,r,lower,upper,power){
     K <- K + 1
   }
 }
-LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r,a,b,random){
+LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a,b,random){
   if(random==FALSE){
     p=vector()
     for(x in 1:reps){
@@ -45,7 +45,7 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r
       rate2 <- log(2)/m2
       followUp <- sample(c("stay", "leave"), size = n, replace = TRUE, prob = c(1-proportion,proportion))
       tx1 <- rexp(n, rate=rate1)
-      c1 <- runif(n, min, max)
+      c1 <- c(Te-runif(n, 0, Ta))
       dftx1 <- data.frame(tx1,c1,followUp)
       newDF <- split(dftx1, dftx1$followUp)
       stayT1 <- newDF$stay$tx1
@@ -59,7 +59,7 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r
       timeStaytx1 <- c(ifelse(stayT1<stayC1, stayT1, stayC1))
       statusStaytx1 <- c(ifelse(stayT1<stayC1, 1, 0))
       newtx2 <- rexp(n*r, rate=rate2)
-      newc2 <- runif(n*r, min, max)
+      newc2 <- c(Te-runif(n*r, 0, Ta))
       newtimetx2 <- c(ifelse(newtx2<newc2, newtx2, newc2))
       newstatustx2 <- c(ifelse(newtx2<newc2, 1, 0))
       group <- c(rep("mix",n), rep(2,n*r))
@@ -79,7 +79,7 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r
       rate2 <- log(2)/m2
       followUp <- sample(c("stay", "leave"), size = n, replace = TRUE, prob = c(1-proportion,proportion))
       tx1 <- rexp(n, rate=rate1)
-      c1 <- runif(n, min, max)
+      c1 <- c(Te-runif(n, 0, Ta))
       dftx1 <- data.frame(tx1,c1,followUp)
       newDF <- split(dftx1, dftx1$followUp)
       stayT1 <- newDF$stay$tx1
@@ -93,7 +93,7 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r
       timeStaytx1 <- c(ifelse(stayT1<stayC1, stayT1, stayC1))
       statusStaytx1 <- c(ifelse(stayT1<stayC1, 1, 0))
       newtx2 <- rexp(n*r, rate=rate2)
-      newc2 <- runif(n*r, min, max)
+      newc2 <- c(Te-runif(n*r, 0, Ta))
       newtimetx2 <- c(ifelse(newtx2<newc2, newtx2, newc2))
       newstatustx2 <- c(ifelse(newtx2<newc2, 1, 0))
       group <- c(rep("mix",n), rep(2,n*r))
@@ -107,13 +107,13 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,min,max,proportion,s,alpha,r
     mean(p<alpha)
   }
 }
-LogRankTestMix2NMedian <- function(m1,m2,reps,min,max,proportion,s,alpha,r,a,b,random,upper,lower,power){
-  pwLower <- LogRankTestMix2PowerMedian(m1,m2,n=lower,reps,min,max,proportion,s,alpha,r,a,b,random)
-  pwUpper <- LogRankTestMix2PowerMedian(m1,m2,n=upper,reps,min,max,proportion,s,alpha,r,a,b,random)
+LogRankTestMix2NMedian <- function(m1,m2,reps,Ta,Te,proportion,s,alpha,r,a,b,random,upper,lower,power){
+  pwLower <- LogRankTestMix2PowerMedian(m1,m2,n=lower,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
+  pwUpper <- LogRankTestMix2PowerMedian(m1,m2,n=upper,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
   K <- 1
   repeat {
     middle <- ceiling((upper+lower)/2)
-    pwMiddle <- LogRankTestMix2PowerMedian(m1,m2,n=middle,reps,min,max,proportion,s,alpha,r,a,b,random)
+    pwMiddle <- LogRankTestMix2PowerMedian(m1,m2,n=middle,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
     if ((pwMiddle >= power & middle==lower) | (pwMiddle >= power & middle==upper) | K >= 50) {
       print(c(N=upper, K=K))
       break

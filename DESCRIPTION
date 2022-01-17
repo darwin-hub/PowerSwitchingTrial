@@ -2,7 +2,7 @@ Package: PowerSwitchingTrial
 Type: Package
 Title: Package for power and sample size estimation in clinic trials
         with treatment switching
-Version: 0.1.1
+Version: 0.1.2
 Author: Lejun Deng, Chih-Yuan Hsu 
 Maintainer: <darwindenglejun@gmail.com>
 Description: 
