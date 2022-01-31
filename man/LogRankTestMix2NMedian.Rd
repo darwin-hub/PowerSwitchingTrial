@@ -80,15 +80,15 @@ r*n must be a whole number, reps recommended to be atleast 5000 to reduce variat
 
 }
 \examples{
-LogRankTestMix2NMedian(m1=1,m2=1.25,reps=5000,min=999,max=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE,upper=1000,lower=30,power=0.8)
-  N   K
-596  11
-## In the above, the initial number of trial patients using treatment 1 that is required is 596. The function performed binary search K times
+LogRankTestMix2NMedian(m1=1,m2=1.25,reps=5000,Ta=0,Te=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE,upper=1000,lower=30,power=0.8)
+  N   K 
+724  11 
+## In the above, the initial number of trial patients using treatment 1 that is required is 724. The function performed binary search K times
 
-LogRankTestMix2NMedian(m1=1,m2=1.25,reps=5000,min=999,max=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE,upper=500,lower=30,power=0.8)
+LogRankTestMix2NMedian(m1=1,m2=1.25,reps=5000,Ta=0,Te=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE,upper=500,lower=30,power=0.8)
             [,1]
-pwLower   0.0894
-pwUpper   0.7338
+pwLower   0.0992
+pwUpper   0.6550
 lower    30.0000
 upper   500.0000
 ## In the above, the range of the lower and upper numbers did not include the power value we specified (0.8) Looking at the results, we can see that they were both smaller than 0.8. If pwLower is greater than the specified power, decrease the lower argument. If pwUpper is smaller than the specified power, increase the upper argument.

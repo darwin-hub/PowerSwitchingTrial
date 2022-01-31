@@ -60,8 +60,8 @@ reps recommended to be atleast 5000 to reduce variation
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-LogRankTestPowerMedian(m1=1,m2=2,n=30,min=100,max=999,reps=5000,alpha=0.05,r=1)
-[1] 0.7292
+LogRankTestPowerMedian(m1=1,m2=2,n=30,Ta=0,Te=999,reps=5000,alpha=0.05,r=1)
+[1] 0.7346
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

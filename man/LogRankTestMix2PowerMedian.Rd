@@ -73,12 +73,12 @@ reps recommended to be atleast 5000 to reduce variation
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-LogRankTestMix2PowerMedian(m1=1,m2=1.25,n=582,reps=5000,min=999,max=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE)
-[1] 0.7966
+LogRankTestMix2PowerMedian(m1=1,m2=1.25,n=582,reps=5000,Ta=0,Te=999,proportion=0.6,s=1,alpha=0.05,r=1,random=FALSE)
+[1] 0.714
 ## In the above example, since random is FALSE, no values of a or b is required
 
-LogRankTestMix2PowerMedian(m1=1,m2=1.25,n=582,reps=5000,min=999,max=999,proportion=0.6,alpha=0.05,r=1,a=2,b=8,random=TRUE)
-[1] 0.5886
+LogRankTestMix2PowerMedian(m1=1,m2=1.5,n=200,reps=5000,Ta=1,Te=3,proportion=1,s,alpha=0.05,r=1,a=3,b=2,random=T)
+[1] 0.4876
 ## In the above example, since random is TRUE, no value for s is required
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
