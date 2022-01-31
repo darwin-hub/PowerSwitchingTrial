@@ -53,7 +53,11 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a
       A <- rate1/rate2
       oldLeaveT1 <- newDF$leave$tx1
       leaveC1 <- newDF$leave$c1
-      newLeaveT1 <- c(ifelse(apply(newDF$leave, 1, FUN = min)>s, s+(oldLeaveT1-s)*A, oldLeaveT1))
+      if(length(oldLeaveT1)!=0){
+      newLeaveT1 <- c(ifelse(apply(newDF$leave[,1:2], 1, FUN = min)>s, s+(oldLeaveT1-s)*A, oldLeaveT1))
+      } else{
+        newLeaveT1 <- oldLeaveT1
+      }
       timeLeavetx1 <- c(ifelse(newLeaveT1<leaveC1, newLeaveT1, leaveC1))
       statusLeavetx1 <- c(ifelse(newLeaveT1<leaveC1, 1, 0))
       timeStaytx1 <- c(ifelse(stayT1<stayC1, stayT1, stayC1))
@@ -87,7 +91,11 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a
       A <- rate1/rate2
       oldLeaveT1 <- newDF$leave$tx1
       leaveC1 <- newDF$leave$c1
-      newLeaveT1 <- c(ifelse(apply(newDF$leave, 1, FUN = min)>(time=oldLeaveT1*rbeta(1,a,b)), time+(oldLeaveT1-time)*A, oldLeaveT1))
+      if(length(oldLeaveT1)!=0){
+      newLeaveT1 <- c(ifelse(apply(newDF$leave[,1:2], 1, FUN = min)>(time=oldLeaveT1*rbeta(1,a,b)), time+(oldLeaveT1-time)*A, oldLeaveT1))
+      } else{
+        newLeaveT1 <- oldLeaveT1
+      }
       timeLeavetx1 <- c(ifelse(newLeaveT1<leaveC1, newLeaveT1, leaveC1))
       statusLeavetx1 <- c(ifelse(newLeaveT1<leaveC1, 1, 0))
       timeStaytx1 <- c(ifelse(stayT1<stayC1, stayT1, stayC1))
