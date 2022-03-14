@@ -8,7 +8,7 @@
 Find the number of patients required in treatment 1 (control group) to reach a specified power if patients from treatment 1 switches to treatment 2 (experiment group). Requires packages survival and survminer
 }
 \usage{
-LogRankTestMix2NMedian(m1,m2,reps,min,max,proportion,s,alpha,r,a,b,random,upper,lower,power)
+LogRankTestMix2NMedian(m1,m2,reps,Ta,Te,proportion,s,alpha,r,a,b,random,upper,lower,power)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

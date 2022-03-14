@@ -8,7 +8,7 @@
 Find the number of patients required in treatment 1 (control group) for the test to reach a specified power (requires packages survival and survminer)
 }
 \usage{
-LogRankTestMedian(m1,m2,min,max,reps,alpha,r,lower,upper,power)
+LogRankTestMedian(m1,m2,Ta,Te,reps,alpha,r,lower,upper,power)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -9,7 +9,7 @@
 Find the power of a Log Rank Test (Requires Packages survival and survminer)
 }
 \usage{
-LogRankTestPowerMedian(m1,m2,n,min,max,reps,alpha,r)
+LogRankTestPowerMedian(m1,m2,n,Ta,Te,reps,alpha,r)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

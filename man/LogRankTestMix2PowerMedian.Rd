@@ -8,7 +8,7 @@
 Find the power of a Log Rank Test when a proportion of patients of the control group (treatment 1) switches to the experimental group (treatment 2). (Requirese packages survival and survminer)
 }
 \usage{
-LogRankTestMix2PowerMedian(m1,m2,n,reps,min,max,proportion,s,alpha,r,a,b,random)
+LogRankTestMix2PowerMedian(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
