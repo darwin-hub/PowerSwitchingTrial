@@ -33,8 +33,11 @@ install_github("darwin-hub/PowerSwitchingTrial")
 
 # Example
 LogRankTestMedian(m1=1,m2=1.5,Ta=0,Te=999,reps=5000,alpha=0.05,r=1,lower=50,upper=300,power=0.8)
+
 N K
+
 98 11
+
 In the above, the initial number of trial patients using treatment 1 that is required is 98. The function performed binary search K times
 
 LogRankTestMedian(m1=1,m2=1.5,Ta=0,Te=999,reps=5000,alpha=0.05,r=1,lower=50,upper=70,power=0.8)
