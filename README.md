@@ -9,7 +9,7 @@
 
 # Introduction
 
-PowerSwitchingTrial is a R package to calculate power of a clinical trial and sample size needed for a power in the presence of treatment switching.
+PowerSwitchingTrial is a R package to estimate power and sample sizes in clinical trials with treatment switching.
 
 <a name="installation"/>
 
@@ -18,7 +18,7 @@ PowerSwitchingTrial is a R package to calculate power of a clinical trial and sa
 ```R
 
 library(devtools)
-install_github(darwin-hub/PowerSwitchingTrial)
+install_github("darwin-hub/PowerSwitchingTrial")
 ```
 
 
