@@ -1,4 +1,4 @@
-LogRankTestPowerMedian <- function(m1,m2,n,Ta,Te,reps,alpha,r){
+LogRankTestPowerMedian <- function(m1,m2,n,Ta,Te,reps=5000,alpha=0.05,r=1){
   p=vector()
   for(x in 1:reps){
     rate1 <- log(2)/m1
@@ -16,7 +16,7 @@ LogRankTestPowerMedian <- function(m1,m2,n,Ta,Te,reps,alpha,r){
   }
   mean(p<alpha)
 }
-LogRankTestMedian <- function(m1,m2,Ta,Te,reps,alpha,r,lower,upper,power){
+LogRankTestMedian <- function(m1,m2,Ta,Te,reps,alpha=0.05,r=1,lower,upper,power=0.8){
   pwLower <- LogRankTestPowerMedian(m1,m2,n=lower,Ta,Te,reps,alpha,r)
   pwUpper <- LogRankTestPowerMedian(m1,m2,n=upper,Ta,Te,reps,alpha,r)
   K <- 1
@@ -37,7 +37,7 @@ LogRankTestMedian <- function(m1,m2,Ta,Te,reps,alpha,r,lower,upper,power){
     K <- K + 1
   }
 }
-LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a,b,random){
+LogRankTestMix2PowerMedian <- function(m1,m2,n,reps=5000,Ta,Te,proportion,s,alpha=0.05,r,a,b,random){
   if(random==FALSE){
     p=vector()
     for(x in 1:reps){
@@ -115,7 +115,7 @@ LogRankTestMix2PowerMedian <- function(m1,m2,n,reps,Ta,Te,proportion,s,alpha,r,a
     mean(p<alpha)
   }
 }
-LogRankTestMix2NMedian <- function(m1,m2,reps,Ta,Te,proportion,s,alpha,r,a,b,random,upper,lower,power){
+LogRankTestMix2NMedian <- function(m1,m2,reps=5000,Ta,Te,proportion,s,alpha=0.05,r=1,a,b,random,upper,lower,power=0.8){
   pwLower <- LogRankTestMix2PowerMedian(m1,m2,n=lower,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
   pwUpper <- LogRankTestMix2PowerMedian(m1,m2,n=upper,reps,Ta,Te,proportion,s,alpha,r,a,b,random)
   K <- 1
