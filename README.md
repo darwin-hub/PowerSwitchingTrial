@@ -26,7 +26,7 @@ install_github("darwin-hub/PowerSwitchingTrial")
 
 # Citation
 
- Lejun Deng, Hsu Chih-Yuan, Shyr Yu.
+ Lejun Deng, Hsu Chih-Yuan, Shyr Yu. https://doi.org/10.1101/2022.09.07.22279686
  
 
 <a name="tutoral"/>
