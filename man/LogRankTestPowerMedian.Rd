@@ -34,14 +34,14 @@ how many times the test is repeated
 alpha level/type I error
 }
   \item{r}{
-ratio of patients in trial two to patients in trial one
+The allocation ratio of patients in trial two to patients in trial one
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-output number is the power of the test
+output number is the power of the test and the expected number of events
 }
 \references{
 %% ~put references to the literature/web site here ~

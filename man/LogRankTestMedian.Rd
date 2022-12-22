@@ -46,9 +46,7 @@ power that you wish to reach
 This function uses a binary search method (starting lower and upper  number) to find the required number of trial patients in treatment 1 (control treatment) to reach the specified power
 }
 \value{
-*Scrow down to Examples for more explanations on Values.
-
-Returns N and K. N is the required number of trial patients in treatment 1. K is how many times binary search was preformed before finding N. An K value of 50 means the value of N was not able to be comepletey narrowed down
+Returns the sample size and the number of expected events of both the experimental and control group
 }
 \references{
 %% ~put references to the literature/web site here ~
