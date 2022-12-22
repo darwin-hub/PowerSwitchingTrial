@@ -380,4 +380,3 @@ sw.beta <- function(p, rho, V, mu) {
   }
   
 }
-
