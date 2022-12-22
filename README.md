@@ -3,7 +3,7 @@
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Citation](#citation)
-* [Example](#example)
+* [Usage](#Usage)
 
 <a name="introduction"/>
 
@@ -26,23 +26,27 @@ install_github("darwin-hub/PowerSwitchingTrial")
 
 # Citation
 
- Lejun Deng, Hsu Chih-Yuan, Shyr Yu. https://doi.org/10.1101/2022.09.07.22279686
+ Lejun Deng, Chih-Yuan Hsu, Yu Shyr . https://doi.org/10.1101/2022.09.07.22279686
  
 
-<a name="example"/>
+<a name="Usage"/>
 
-# Example
+# Usage
 
-To find the power of a clinical trial where the extimated median survival time of the experimental treatment group is 1.5x the control group. It is assumed that all patients are recruitted at the start of the clinical trial, and the clinical trial doesn't end. The proportion of patients who switch is 0.6, and the switching time is also the estimated median survival time of the control group. The power required is 0.8
+To estimate the power of a clinical trial with treatment switching at a significance level of 0.05 (alpha=0.05), where the trial has 500 patients in each group (n=500), the allocation ratio r of 1, the median survival time of the control group and the experimental group is 1 and 1.5 (m1=1, m2=1.5), respectively, the switching probability of 0.3 (proportion=0.3), the option of switching time to be "beta" (s.dist="beta"), the ratio of average switching time and the event time to be 0.3, the correlation between the switching time and the event time of 0.5. 
 
 ```R
-LogRankTestMix2PowerMedian(n=500, m1=1, m2=1.5, r=1, Ta=0, Te=999, proportion=0.6, alpha=0.05, 
+library(PowerSwitchingTrial)
+LogRankTestMix2PowerMedian(n=500, m1=1, m2=1.5, r=1, Ta=0, Te=4, proportion=0.3, alpha=0.05, 
                                        s.dist="beta", pt=0.3, rho=0.5,
                                        censor.rate=c("AC.only"),
                                        reps=5000)
 ```
+
+To determine the sample size required to achieve 80% power at a significance level of 0.05 and other settings described as above. 
 ```R
-LogRankTestMix2NMedian(power=0.8, lower=100, upper=300, m1=1, m2=1.5, r=1, Ta=0, Te=4, proportion=0.3, alpha=0.05, s.dist="beta", pt=0.3, rho=0.5,
+LogRankTestMix2NMedian(power=0.8, lower=100, upper=300, m1=1, m2=1.5, r=1, Ta=0, Te=4, 
+                       proportion=0.3, alpha=0.05, s.dist="beta", pt=0.3, rho=0.5,
                        censor.rate=c("AC.only"),
                        reps=5000)
 ```
